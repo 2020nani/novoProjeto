@@ -4,7 +4,6 @@ import { MdShoppingBasket } from 'react-icons/md';
 import { Container, Cart, Button } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { formataPreco } from '../../Util/format';
-import api from '../../services/api';
 import { loadJogos } from '~/store/modules/jogos/actions';
 import logo from '../../assets/images/logo.jpg'
 
@@ -19,8 +18,13 @@ useEffect(() => {
   loadGames()
 }, []);
 async function loadGames() {
-  const response = await api.get('products.json')
-  const data = response.data.map(data => ({
+  const response = await fetch('./products.json', {
+    headers: {
+      Accept: "application/json"
+    }
+  }).then(res => res.json())
+  
+  const data = response.map(data => ({
     ...data,
     precoFormatado: formataPreco(data.price)
   }))
