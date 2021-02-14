@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { GamesList } from './styles';
-import { formataPreco } from '../../Util/format';
-import api from '../../services/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { carrinhoRequest } from '~/store/modules/carrinho/actions';
-import { loadJogos } from '~/store/modules/jogos/actions';
+
 
 
 
@@ -26,7 +24,7 @@ export default function Home() {
   }
   
 
-  return (console.log(games),
+  return (
     <GamesList>
      
       {games.jogos.map(jogo => (

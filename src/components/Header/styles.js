@@ -24,6 +24,7 @@ export const Cart = styled(Link)`
   div {
     text-align: right;
     margin-right: 10px;
+    margin-left: 2px;
     strong {
       display: block;
       color: #fff;

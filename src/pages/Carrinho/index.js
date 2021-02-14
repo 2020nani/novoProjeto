@@ -1,32 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Container, TabelaJogo, Total } from './styles';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
 import { formataPreco } from '../../Util/format';
 import { useDispatch, useSelector } from 'react-redux';
 import { carrinhoRemover, updateQuantidade } from '~/store/modules/carrinho/actions';
+import Checkout from '../../components/Checkout/index'
 
 export default function Carrinho() {
-
+  const [checkout, setCheckout] = useState(false)
   const dispatch = useDispatch()
   const jogosEscolhidos = useSelector(state => state.carrinho.map(car => ({
     ...car,
     subtotal: formataPreco(car.price * car.quantidade),
   })));
   const frete = useSelector(state =>
-    formataPreco(state.carrinho.reduce((totalSoma, car) => {
-      if(car.price * car.quantidade < 250){
+    state.carrinho.reduce((totalSoma, car) => {
+      if(totalSoma + car.price * car.quantidade < 250){
       return totalSoma + 10 * car.quantidade ;
       }else {
         return 0
       }
-    }, 0))
+    }, 0)
   )
   const total = useSelector(state =>
-    formataPreco(state.carrinho.reduce((totalSoma, car) => {
+    state.carrinho.reduce((totalSoma, car) => {
       return totalSoma + car.price * car.quantidade ;
-    }, 0))
+    }, 0)
   )
-
+  const freteFormatado = formataPreco(frete)
+  const totalFormatado = formataPreco(total)
  
 
 
@@ -42,7 +44,8 @@ export default function Carrinho() {
     dispatch(updateQuantidade(jogo.id, jogo.quantidade - 1));
   }
 
-  return (console.log(total),
+  return (
+    checkout == false ?
     <Container>
 
 
@@ -92,18 +95,19 @@ export default function Carrinho() {
       </TabelaJogo>
 
       <footer>
-        <button type="button"> Finalizar Pedido</button>
+        <button type="button" onClick={() => setCheckout(true)}> FINALIZAR PEDIDO</button>
 
         <Total>
 
           <span>FRETE</span>
-          <strong>{frete}</strong>
-
+          {parseInt(total) < 250 ? 
+          <strong>{freteFormatado}</strong>
+          :<strong>0</strong> }
           <span>TOTAL GAMES</span>
-          <strong>{total} </strong>
+          <strong>{totalFormatado} </strong>
         </Total>
       </footer>
     </Container>
-
+ : <Checkout>{[jogosEscolhidos, parseInt(frete), parseFloat(total)]}</Checkout>
   );
 }

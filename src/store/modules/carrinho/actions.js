@@ -15,12 +15,18 @@ export function carrinhoRequest(data) {
   }
   
   export function updateQuantidade(id, quantidade) {
-    console.log(id, quantidade)
+  
     return {
       type: '@carrinho/UPDATE_QUANTIDADE',
       id,
       quantidade
     };
+  }
+
+  export function reset() {
+    return {
+    type: '@CARRINHO_RESET_STATE'
+    }
   }
  
   

@@ -60,10 +60,10 @@ function ordenarPreco(){
 }
 function ordenarScore(){
   let ordenarScore = games.jogos.slice().sort(function(a, b) {
-    if (a.score < b.score) {
+    if (b.score < a.score) {
       return -1;
     }
-    if (a.score > b.score) {
+    if (b.score > a.score) {
       return 1;
     }
     // são idênticos

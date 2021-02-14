@@ -36,6 +36,9 @@ export default function carrinho(state = [], action) {
         }
       });
     }
+
+    case '@CARRINHO_RESET_STATE':
+      return state = []; //Always return the initial state
     default:
       return state
   }
