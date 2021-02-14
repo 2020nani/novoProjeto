@@ -6,6 +6,11 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   margin: 50px 0;
+  background: gray
+  img{
+    margin-left: 5px;
+    margin-top: 2px
+  }
 `;
 
 export const Cart = styled(Link)`
@@ -25,7 +30,20 @@ export const Cart = styled(Link)`
     }
     span {
       font-size: 12px;
-      color: #999;
+      color: white;
     }
   }
 `;
+
+export const Button = styled.div `
+width: 50%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+button{
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px
+}
+`
