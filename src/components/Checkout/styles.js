@@ -6,6 +6,9 @@ export const Container = styled.div`
   justify-content: center
   background: white;
  padding: 10px
+ @media (max-width:520px) {
+    flex-direction: column
+   }
 `;
 
 export const Compras = styled.div`
@@ -13,6 +16,9 @@ width: 35%;
 margin: 1%;
 display: flex;
 flex-direction: column;
+@media (max-width:520px) {
+    width: 100%
+   }
 h1{
     padding-top:4px
     text-align: center
@@ -39,6 +45,9 @@ width:35%;
 margin: 1%;
 display: flex;
 flex-direction: column;
+@media (max-width:570px) {
+    width:100%
+   }
 h1{
 padding-top:4px
 text-align: center
