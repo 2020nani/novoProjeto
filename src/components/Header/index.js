@@ -83,9 +83,9 @@ function ordenarScore(){
         <img width="150px" src= {logo} alt= "logo" />
       </Link>
       <Button>
-      <button type="button" onClick={() => ordenarAlfabeto()}>Ordenar por Alfabeto</button>
-      <button type="button" onClick={() => ordenarPreco()}>Ordenar por Preco</button>
-      <button type="button" onClick={() => ordenarScore()}>Ordenar por Score</button>
+      <button type="button" onClick={() => ordenarAlfabeto()}>Ordenar Alfabeto</button>
+      <button type="button" onClick={() => ordenarPreco()}>Ordenar Preco</button>
+      <button type="button" onClick={() => ordenarScore()}>Ordenar Score</button>
       <button type="button" onClick={() => loadGames()}>Sem filtros </button>
       </Button>
 

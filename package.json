@@ -20,6 +20,8 @@
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.0.5",
     "styled-components": "^4.3.2",
+    "@rocketseat/unform": "^1.6.2",
+    "yup": "^0.29.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
