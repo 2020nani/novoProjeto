@@ -14,7 +14,7 @@ list-style: none;
 li {
     display: flex;
     flex-direction: column;
-    background: #FFF;
+    background: none;
     border-radius: 4px;
     padding: 20px;
 }

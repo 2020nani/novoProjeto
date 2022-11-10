@@ -6,7 +6,7 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   margin: 50px 0;
-  background: gray
+  background: linear-gradient(#FFA384, #74BDCB);
   @media (max-width:500px) {
     margin: 10px 0;  
   }
@@ -25,6 +25,7 @@ export const Cart = styled(Link)`
   align-items: center;
   text-decoration: none;
   transition: opacity 0.2s;
+  margin: 0 10px 0 0;
   @media (max-width:500px) {
     flex-direction: column 
     svg{
@@ -43,7 +44,7 @@ export const Cart = styled(Link)`
     }
     strong {
       display: block;
-      color: #fff;
+      color: #000;
       padding: 2px
       @media (max-width:500px) {
         font-size: 12px 
@@ -51,7 +52,7 @@ export const Cart = styled(Link)`
     }
     span {
       font-size: 12px;
-      color: white;
+      color: black;
       padding: 2px;
       @media (max-width:500px) {
         font-size: 10px 
@@ -68,7 +69,7 @@ align-items: center;
 button{
   background: none;
   border: none;
-  color: white;
+  color: black;
   font-size: 16px
   @media (max-width:500px) {
     font-size:10px  
