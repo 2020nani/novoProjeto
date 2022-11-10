@@ -5,7 +5,7 @@ import { Container, Cart, Button } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { formataPreco } from '../../Util/format';
 import { loadJogos } from '~/store/modules/jogos/actions';
-import logo from '../../assets/images/logo.jpg'
+import logo from '../../assets/images/logo.jpeg'
 
 
 
@@ -34,18 +34,13 @@ async function loadGames() {
   
 }
 
-function ordenarAlfabeto(){
-  let ordenarAlfabeto = games.jogos.slice().sort(function(a, b) {
-    if (a.name < b.name) {
-      return -1;
-    }
-    if (a.name > b.name) {
-      return 1;
-    }
-    // são idênticos
-    return 0;
-  })
-  dispatch(loadJogos(ordenarAlfabeto));
+function pesquisarProdutos(produto){
+  
+  let produtos = games.jogos.filter(games => games.name.toLowerCase().includes(produto.toLowerCase()))
+  console.log(produtos)
+  /*let produtos = games.jogos.contains(produto)
+  console.log(produtos)
+  dispatch(loadJogos(produtos));*/
 
 }
 function ordenarPreco(){
@@ -83,10 +78,7 @@ function ordenarScore(){
         <img width="150px" src= {logo} alt= "logo" />
       </Link>
       <Button>
-      <button type="button" onClick={() => ordenarAlfabeto()}>Ordenar Alfabeto</button>
-      <button type="button" onClick={() => ordenarPreco()}>Ordenar Preco</button>
-      <button type="button" onClick={() => ordenarScore()}>Ordenar Score</button>
-      <button type="button" onClick={() => loadGames()}>Sem filtros </button>
+      <h2>Doces da Lu</h2>
       </Button>
 
       <Cart to="/carrinho">
@@ -95,7 +87,7 @@ function ordenarScore(){
           <span>{carrinhoSize} itens</span>
           
         </div>
-        <MdShoppingBasket size={36} color="#FFF" />
+        <MdShoppingBasket size={36} color="#000" />
       </Cart>
     </Container>
   );

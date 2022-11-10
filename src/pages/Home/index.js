@@ -29,7 +29,7 @@ export default function Home() {
      
       {games.jogos.map(jogo => (
         <li key={jogo.id}>
-          <img src={jogo.image} alt={jogo.name} />
+          <img width="300px" height="300px" object-fit="contain"  src={jogo.image} alt={jogo.name}/>
           <strong>{jogo.name}</strong>
           <span> {jogo.precoFormatado}</span>
           <span>SCORE: {jogo.score}</span>
