@@ -1,7 +1,13 @@
 import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { MdShoppingBasket } from 'react-icons/md';
-import { Container, Cart, Button } from './styles';
+import { 
+  Container,
+  Cart, 
+  Button,
+  ContainerGrid,
+  ContainerGridMenu,
+  ContainerGridConteudo } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { formataPreco } from '../../Util/format';
 import { loadJogos } from '~/store/modules/jogos/actions';
@@ -12,6 +18,7 @@ import logo from '../../assets/images/logo.jpeg'
 function Header() {
 const dispatch = useDispatch();
 const carrinhoSize = useSelector(state => state.carrinho.length);
+const profile = useSelector(state => state.user.profile);
 const games = useSelector(state => state.jogos)
 useEffect(() => {
 
@@ -73,15 +80,26 @@ function ordenarScore(){
 }
   
   return (
+    
     <Container>
-      <Link to="/">
-        <img width="150px" src= {logo} alt= "logo" />
-      </Link>
-      <Button>
-      <h2>Doces da Lu</h2>
-      </Button>
-
-      <Cart to="/carrinho">
+      {profile != null ?
+      <ContainerGrid>
+        <ContainerGridConteudo size={1} align="flex-start">
+          <div>
+            <Link to="home">
+              {' '}
+              <img src={logo} alt="logo" />
+            </Link>
+          </div>
+        </ContainerGridConteudo>
+        <ContainerGridConteudo size={3} align="space-around">
+          <div>
+            <strong>Usuario: {profile.nome} </strong>
+          </div>
+          <div>
+            <Link to="profile"> Perfil</Link>
+          </div>
+          <Cart to="/carrinho">
         <div>
           <strong>Meu carrinho</strong>
           <span>{carrinhoSize} itens</span>
@@ -89,6 +107,28 @@ function ordenarScore(){
         </div>
         <MdShoppingBasket size={36} color="#000" />
       </Cart>
+        </ContainerGridConteudo>
+      </ContainerGrid>
+      :
+      <ContainerGrid>
+        <ContainerGridConteudo size={1} align="flex-start">
+          <div>
+            <Link to="home">
+              {' '}
+              <img src={logo} alt="logo" />
+            </Link>
+          </div>
+        </ContainerGridConteudo>
+        <ContainerGridConteudo size={1} align="flex-end">
+         <Cart to="/carrinho">
+           <div>
+            <strong>Meu carrinho</strong>
+            <span>{carrinhoSize} itens</span>
+           </div>
+          <MdShoppingBasket size={36} color="#000" />
+         </Cart>
+        </ContainerGridConteudo>
+      </ContainerGrid>}
     </Container>
   );
 }

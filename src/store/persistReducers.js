@@ -8,7 +8,7 @@ export default reducers => {
     {
       key: 'cotabox',
       storage,
-      whitelist: ['carrinho'],
+      whitelist: ['auth', 'user', 'carrinho'],
     },
     reducers
   );

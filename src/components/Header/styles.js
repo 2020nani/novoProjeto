@@ -1,24 +1,57 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Container = styled.header`
+export const Container = styled.div`
+width:100vw;
+margin:0;
+height:18vh;
+background: white;
+display:flex;
+align-items:center
+font-family: Arial, Helvetica, sans-serif;
+a:{
+  text-decoration: none;
+  color: black
+}
+a:hover {
+  text-decoration: underline;
+  color: blue
+  transiction-color: 100ms
+}
+`;
+
+export const ContainerGrid = styled.div`
+  width: 100vw;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 50px 0;
-  background: linear-gradient(#FFA384, #74BDCB);
-  @media (max-width:500px) {
-    margin: 10px 0;  
+  margin-top: 5px;
+  img {
+    width: 25%;
   }
-  img{
-    margin-left: 5px;
-    margin-top: 2px
-    @media (max-width:500px) {
-      margin: 0;
-      width: 50px
+  @media (max-width: 650px) {
+    display: none;
+  }
+`;
+
+export const ContainerGridMenu = styled.div`
+  width: 90vw;
+  display: none;
+  justify-content: space-between;
+  @media (max-width: 650px) {
+    display: flex;
+    margin-top: 5px;
+    img {
+      width: 30%;
     }
   }
 `;
+export const ContainerGridConteudo = styled.div`
+  flex: ${props => props.size}
+  align-items: center;
+  display: flex;
+  justify-content: ${props => props.align};
+`;
+
 
 export const Cart = styled(Link)`
   display: flex;

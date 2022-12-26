@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { carrinhoRequest } from '~/store/modules/carrinho/actions';
 
 
-
-
 export default function Home() {
   const dispatch = useDispatch()
   const quantiajogo = useSelector(state =>
@@ -26,7 +24,6 @@ export default function Home() {
 
   return (
     <GamesList>
-     
       {games.jogos.map(jogo => (
         <li key={jogo.id}>
           <img width="300px" height="300px" object-fit="contain"  src={jogo.image} alt={jogo.name}/>

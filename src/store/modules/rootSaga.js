@@ -1,8 +1,9 @@
 import { all } from 'redux-saga/effects';
-
+import auth from './auth/sagas';
+import user from './user/sagas';
 import carrinho from './carrinho/sagas'
 import jogos from './jogos/reducer'
 
 export default function* rootSaga() {
-    return yield all ([carrinho, jogos ])
+    return yield all ([auth, user, carrinho, jogos ])
 }
