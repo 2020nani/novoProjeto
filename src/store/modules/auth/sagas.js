@@ -12,11 +12,11 @@ export function* signIn({ payload }) {
       nome,
       senha,
     });
-    console.log(response.data)
+    
     const { token, user } = response.data;
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
-
+    
     yield put(signInSuccess(token, user));
     toast.success('Usuario autenticado com sucesso');
     history.push('/home');

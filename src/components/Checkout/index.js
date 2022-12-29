@@ -12,10 +12,9 @@ import history from '../../services/history';
 
 
 const schema = Yup.object().shape({
-    cartao: Yup.string()
-      .required('O numero do cartao é obrigatório'),
-    nome: Yup.string().required('o nome é obrigatório'),
-    cpf: Yup.string().required("Cpf e obrigatorio").min(11, 'CPF invalido').max(11, 'CPF invalido')
+    email: Yup.string()
+    .email("email formato incorreto")
+    .required("Email e obrigatorio")
   });
   
 
@@ -44,7 +43,7 @@ export default function Checkout(props) {
                 <h1>CHECKOUT</h1>
                 {jogos.map(jogo => (
                     <li key={jogo.id}>
-                        <img src={jogo.image} alt={jogo.name} />
+                        <img src={jogo.image} alt={jogo.name} width="25%"/>
                         <strong>QTD: {jogo.quantidade} JOGO: {jogo.name}</strong>
                     </li>
                 ))}
@@ -61,9 +60,7 @@ export default function Checkout(props) {
                 <img src={cartao} alt="cartao credito" />
                 
                 <Form schema={schema} >
-        <Input name="cartao" type="text" placeholder="Numero do cartao" />
-        <Input name="nome" type="text"  placeholder="Nome impresso no cartao" />
-        <Input name="doc" type="text" placeholder="CPF titular" />
+        <Input name="email" type="text" placeholder="Digite seu email" />
         <button type="button" onClick={() => handleModal()}>FINALIZAR COMPRA</button>
         
       </Form>

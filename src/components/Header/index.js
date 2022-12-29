@@ -10,8 +10,9 @@ import {
   ContainerGridConteudo } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { formataPreco } from '../../Util/format';
-import { loadJogos } from '~/store/modules/jogos/actions';
+import { loadProdutos } from '~/store/modules/produtos/actions';
 import logo from '../../assets/images/logo.jpeg'
+import api from '../../services/api'
 
 
 
@@ -19,25 +20,20 @@ function Header() {
 const dispatch = useDispatch();
 const carrinhoSize = useSelector(state => state.carrinho.length);
 const profile = useSelector(state => state.user.profile);
-const games = useSelector(state => state.jogos)
-useEffect(() => {
+const games = useSelector(state => state.produtos)
 
-  loadGames()
+useEffect(() => {
+  loadProduto()
 }, []);
-async function loadGames() {
-  const response = await fetch('./products.json', {
-    headers: {
-      Accept: "application/json"
-    }
-  }).then(res => res.json())
+async function loadProduto() {
+  const responseRequest = await api.get('produtos').catch(err => {console.log(err)}).then(res => res.data.content)
   
-  const data = response.map(data => ({
+  const data = responseRequest.map(data => ({
     ...data,
-    precoFormatado: formataPreco(data.price)
+    precoFormatado: formataPreco(data.preco)
   }))
   
-  dispatch(loadJogos(data));
-  
+  dispatch(loadProdutos(data));
   
 }
 
@@ -61,7 +57,7 @@ function ordenarPreco(){
     // são idênticos
     return 0;
   })
-  dispatch(loadJogos(ordenarPreco));
+  dispatch(loadProdutos(ordenarPreco));
 
 }
 function ordenarScore(){
@@ -75,7 +71,7 @@ function ordenarScore(){
     // são idênticos
     return 0;
   })
-  dispatch(loadJogos(ordenarScore));
+  dispatch(loadProdutos(ordenarScore));
 
 }
   

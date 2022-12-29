@@ -5,9 +5,9 @@ export default function carrinho(state = [], action) {
     case '@carrinho/CARRINHO_REQUEST':
       return produce(state, draft => {
 
-        const jogoIndex = draft.findIndex(p => p.id === action.payload.data.id);
-        if (jogoIndex >= 0) {
-          draft[jogoIndex].quantidade += 1;
+        const produtoIndex = draft.findIndex(p => p.id === action.payload.data.id);
+        if (produtoIndex >= 0) {
+          draft[produtoIndex].quantidade += 1;
         } else {
           draft.push({
             ...action.payload.data,
@@ -18,9 +18,9 @@ export default function carrinho(state = [], action) {
 
     case '@carrinho/REMOVER_DO_CARRINHO':
       return produce(state, draft => {
-        const jogoIndex = draft.findIndex(p => p.id === action.id);
-        if (jogoIndex >= 0) {
-          draft.splice(jogoIndex, 1);
+        const produtoIndex = draft.findIndex(p => p.id === action.id);
+        if (produtoIndex >= 0) {
+          draft.splice(produtoIndex, 1);
         }
       });
 
@@ -30,9 +30,9 @@ export default function carrinho(state = [], action) {
       }
       return produce(state, draft => {
 
-        const jogoIndex = draft.findIndex(p => p.id === action.id);
-        if (jogoIndex >= 0) {
-          draft[jogoIndex].quantidade = Number(action.quantidade);
+        const produtoIndex = draft.findIndex(p => p.id === action.id);
+        if (produtoIndex >= 0) {
+          draft[produtoIndex].quantidade = Number(action.quantidade);
         }
       });
     }

@@ -6,9 +6,9 @@ import { persistReducer } from 'redux-persist';
 export default reducers => {
   const persistedReducer = persistReducer(
     {
-      key: 'cotabox',
+      key: 'lojaslu',
       storage,
-      whitelist: ['auth', 'user', 'carrinho'],
+      whitelist: ['auth', 'user', 'carrinho', 'produtos'],
     },
     reducers
   );
