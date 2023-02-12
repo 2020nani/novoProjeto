@@ -8,7 +8,7 @@ export default reducers => {
     {
       key: 'lojaslu',
       storage,
-      whitelist: ['auth', 'user', 'carrinho', 'produtos'],
+      whitelist: ['auth', 'user', 'carrinho'],
     },
     reducers
   );
